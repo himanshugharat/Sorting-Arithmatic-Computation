@@ -16,4 +16,19 @@ for i in one two three four
 do
 	arr[count++]=${store[$i]}
 done
-
+temp=0
+len=${#arr[@]}
+for ((i=0;i<$len;i++))
+do
+	for((j=0;j<$len;j++))
+	do
+		if [ ${arr[$i]} -gt ${arr[$j]} ]
+		then
+			temp=${arr[$i]}
+			arr[$i]=${arr[$j]}
+			arr[$j]=$temp
+		fi
+	done
+done
+echo "descending order"
+echo ${arr[@]}
